@@ -1,0 +1,17 @@
+{
+  "name": "@storefront/root",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start:admin": "pnpm --filter @storefront/admin run dev",
+    "start:client": "pnpm --filter @storefront/client run dev",
+    "start:server": "pnpm --filter @storefront/server run start",
+    "start:all": "concurrently \"pnpm start:admin\" \"pnpm start:client\" \"pnpm start:server\" "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
