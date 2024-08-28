@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@storefront/ui": "workspace:^",
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
