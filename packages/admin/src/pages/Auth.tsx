@@ -5,6 +5,7 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
+  Button,
 } from "@storefront/ui";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
@@ -28,6 +29,7 @@ const AuthPage = () => {
 
     return () => subscription.unsubscribe();
   }, []);
+  console.log("user_metadata", session)
   if (!session) {
     return (
       <div className="flex flex-col justify-center items-center w-full h-screen">
@@ -43,14 +45,20 @@ const AuthPage = () => {
                 theme: ThemeSupa,
               }}
               socialLayout="horizontal"
-              providers={["github", "facebook"]}
+              providers={["github", "facebook", "google"]}
             />
           </CardContent>
         </Card>
       </div>
     );
   } else {
-    return <div>Logged in!</div>;
+    return (
+    <div>
+      <div>
+        <Button onClick={() => supabase.auth.signOut()} variant="destructive">LogOut</Button>
+      </div>
+    </div>
+    )
   }
 };
 

@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './node_modules/@storefront/ui/**/*.{ts,tsx}' // Include your component library
   ],
-  prefix: "",
+  important: true,
   theme: {
     container: {
       center: true,
@@ -35,3 +36,4 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 }
+
