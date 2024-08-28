@@ -1,9 +1,7 @@
-import { defineConfig } from 'vite'
-import solid from 'vite-plugin-solid'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 
 export default defineConfig({
-  plugins: [solid()],
-  server: {
-    port: 8080
-  }
-})
+  plugins: [react(), TanStackRouterVite()],
+});
