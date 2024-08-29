@@ -6,7 +6,9 @@
     "start:admin": "pnpm --filter @storefront/admin run dev",
     "start:client": "pnpm --filter @storefront/client run dev",
     "start:server": "pnpm --filter @storefront/server run start",
-    "start:all": "concurrently \"pnpm start:admin\" \"pnpm start:client\" \"pnpm start:server\" "
+    "start:all": "concurrently \"pnpm start:admin\" \"pnpm start:client\" \"pnpm start:server\" ",
+    "lint:all": "concurrently \"pnpm --filter @storefront/admin run lint\" \"pnpm --filter @storefront/client run lint\" \"pnpm --filter @storefront/server run lint\"",
+    "build:all": "concurrently \"pnpm --filter @storefront/admin run build\" \"pnpm --filter @storefront/client run build\""
   },
   "keywords": [],
   "author": "",
