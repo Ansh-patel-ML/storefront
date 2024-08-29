@@ -1,5 +1,5 @@
 {
-  "name": "admin",
+  "name": "@storefront/admin",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -16,7 +16,8 @@
     "@supabase/supabase-js": "^2.45.2",
     "@tanstack/react-router": "^1.51.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
