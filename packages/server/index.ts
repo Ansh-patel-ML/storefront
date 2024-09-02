@@ -1,5 +1,5 @@
-import { createClient, QueryData } from "@supabase/supabase-js";
-import express, { Express, Response, Request } from "express";
+import { createClient } from "@supabase/supabase-js";
+import express, { Express } from "express";
 import "dotenv/config";
 import { Database } from "./database.types";
 import { storeRouter } from "./router/store";
