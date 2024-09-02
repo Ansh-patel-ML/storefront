@@ -1,9 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import HomePage from "../pages/Home";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { supabase } from "../supabase";
 import { router } from "../main";
+import Navbar from "../components/Navbar";
 
-export const Route = createFileRoute("/home")({
+export const Route = createFileRoute("/_auth")({
   beforeLoad: async () => {
     const {
       data: { user },
@@ -11,11 +11,15 @@ export const Route = createFileRoute("/home")({
     if (user === null) {
       router.navigate({
         to: "/",
-        search: {
-          redirect: window.location.href,
-        },
       });
     }
   },
-  component: HomePage,
+  component: () => {
+    return (
+      <>
+        <Navbar />
+        <Outlet />
+      </>
+    );
+  },
 });

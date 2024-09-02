@@ -5,7 +5,6 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 import logo from "../assets/logo.png";
 
 import { supabase } from "../supabase";
-import { Link } from "@tanstack/react-router";
 
 const AuthPage = () => {
   return (
@@ -24,11 +23,10 @@ const AuthPage = () => {
             socialLayout="horizontal"
             providers={["google"]}
             // TODO: handle local and production enviroment
-            redirectTo="http://localhost:5174/home"
+            redirectTo="http://localhost:5174/auth/home"
           />
         </CardContent>
       </Card>
-      <Link to="/home">Home</Link>
     </div>
   );
 };

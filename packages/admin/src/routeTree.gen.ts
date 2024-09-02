@@ -11,19 +11,25 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as HomeImport } from './routes/home'
+import { Route as AuthImport } from './routes/_auth'
 import { Route as IndexImport } from './routes/index'
+import { Route as AuthHomeImport } from './routes/_auth/home'
 
 // Create/Update Routes
 
-const HomeRoute = HomeImport.update({
-  path: '/home',
+const AuthRoute = AuthImport.update({
+  id: '/_auth',
   getParentRoute: () => rootRoute,
 } as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const AuthHomeRoute = AuthHomeImport.update({
+  path: '/home',
+  getParentRoute: () => AuthRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -37,19 +43,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/home': {
-      id: '/home'
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthImport
+      parentRoute: typeof rootRoute
+    }
+    '/_auth/home': {
+      id: '/_auth/home'
       path: '/home'
       fullPath: '/home'
-      preLoaderRoute: typeof HomeImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof AuthHomeImport
+      parentRoute: typeof AuthImport
     }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexRoute, HomeRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexRoute,
+  AuthRoute: AuthRoute.addChildren({ AuthHomeRoute }),
+})
 
 /* prettier-ignore-end */
 
@@ -60,14 +76,21 @@ export const routeTree = rootRoute.addChildren({ IndexRoute, HomeRoute })
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/home"
+        "/_auth"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/home": {
-      "filePath": "home.tsx"
+    "/_auth": {
+      "filePath": "_auth.tsx",
+      "children": [
+        "/_auth/home"
+      ]
+    },
+    "/_auth/home": {
+      "filePath": "_auth/home.tsx",
+      "parent": "/_auth"
     }
   }
 }
